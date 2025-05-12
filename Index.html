@@ -89,6 +89,23 @@
             transform: rotate(10deg); /* Simple rotation on focus */
         }
 
+        /* Style the anchor tag to look like a button */
+        .tool-button-link {
+            display: inline-block; /* Make it behave like a block/button */
+            background-color: #3b82f6; /* Blue background */
+            color: white; /* White text */
+            font-weight: 600; /* Semibold */
+            padding: 0.5rem 1rem; /* py-2 px-4 */
+            border-radius: 9999px; /* rounded-full */
+            font-size: 0.875rem; /* text-sm */
+            transition: background-color 0.3s ease; /* hover transition */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .tool-button-link:hover {
+            background-color: #2563eb; /* Darker blue on hover */
+        }
+
     </style>
 </head>
 <body class="leading-normal tracking-wide">
@@ -111,9 +128,9 @@
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">Your Daily Tools, All in One Place</h1>
             <p class="text-xl md:text-2xl mb-8 opacity-90">Convert, calculate, compress, and simplify your everyday tasks — fast and free.</p>
-            <button class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-blue-100 transition duration-300 animate-pulse-hover">
+            <a href="#tools" class="bg-white text-blue-600 font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:bg-blue-100 transition duration-300 animate-pulse-hover inline-block">
                 Explore Tools
-            </button>
+            </a>
             <div class="mt-12 flex justify-center space-x-8 opacity-80">
                 <i class="fas fa-image text-4xl"></i>
                 <i class="fas fa-file-alt text-4xl"></i>
@@ -139,39 +156,39 @@
                 <p class="text-gray-600 mb-8">Optimize and manipulate your images with ease.</p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 tool-grid">
                     <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
-                        <i class="fas fa-compress text-4xl text-blue-500 mb-4"></i> <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Compressor</h3>
-                        <p class="text-gray-600 text-sm mb-4 tool-description">Reduce file size without losing quality.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
-                    </div>
-                    <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-exchange-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Converter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert images between different formats.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="image-converter.html" class="tool-button-link">Use Tool</a>
+                    </div>
+                    <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
+                        <i class="fas fa-compress text-4xl text-blue-500 mb-4"></i> <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Compressor</h3>
+                        <p class="text-gray-600 text-sm mb-4 tool-description">Reduce file size without losing quality.</p>
+                        <a href="image-compressor.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-expand-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Resizer</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Resize images to custom dimensions.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="image-resizer.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-crop-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Cropper</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Crop images to desired areas.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="image-cropper.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-file-image text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">OCR</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Extract text from images.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="ocr.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-redo-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Image Rotator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Rotate images by any angle.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="image-rotator.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -184,37 +201,37 @@
                         <i class="fas fa-file-pdf text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">PDF to Word/PDF</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert PDFs to Word and vice versa.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="pdf-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                     <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-file-archive text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Compressor</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Reduce document file size.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="document-compressor.html" class="tool-button-link">Use Tool</a>
                     </div>
                     <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-file-import text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Merger/Splitter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Combine or split documents.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="document-merger-splitter.html" class="tool-button-link">Use Tool</a>
                     </div>
                     <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-exchange-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Converter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert documents between various formats.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="document-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-lock text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Lock/Unlock</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Secure or unsecure your documents.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="document-lock-unlock.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-signature text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">eSign</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Electronically sign your documents.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="document-esign.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -227,37 +244,37 @@
                         <i class="fas fa-calculator text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Scientific</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Advanced mathematical calculations.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="scientific-calculator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-birthday-cake text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Age</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Calculate age based on birth date.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="age-calculator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-weight text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">BMI</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Calculate your Body Mass Index.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="bmi-calculator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-money-check-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Loan EMI</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Calculate Equated Monthly Installments.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="loan-emi-calculator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-percent text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">GST</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Calculate Goods and Services Tax.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="gst-calculator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-money-bill-wave text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Currency</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert between different currencies.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="currency-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -270,37 +287,37 @@
                         <i class="fas fa-font text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Case Converter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Change text case (uppercase, lowercase, etc.).</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="case-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-text-width text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Word Counter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Count words, characters, and lines.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="word-counter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-eraser text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Remove Duplicates</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Clean text by removing duplicate lines.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="remove-duplicates.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-sort-alpha-down text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Sorter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Sort lines of text alphabetically or numerically.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="text-sorter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-sync-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Reverser</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Reverse text or lines.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="text-reverser.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-lock text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Encryptor/Decryptor</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Encrypt or decrypt text using various methods.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="text-encryptor-decryptor.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -313,37 +330,37 @@
                         <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">HTML/CSS/JS Minifier</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Reduce file size of web code.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="code-minifier.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-indent text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">JSON Formatter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Format and validate JSON data.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="json-formatter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-lock text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Base64 Encoder</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Encode data into Base64 format.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="base64-encoder.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-link text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">URL Encoder</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Encode or decode URL strings.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="url-encoder.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-palette text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Color Picker</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Select colors from a palette or image.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="color-picker.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-code text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Regex Tester</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Test and debug regular expressions.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="regex-tester.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -356,37 +373,37 @@
                         <i class="fas fa-image text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Picker from Image</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Extract colors from uploaded images.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="color-picker-from-image.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-exchange-alt text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">HEX to RGB</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert color codes between formats.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="hex-to-rgb.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-fill-drip text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Gradient Generator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Create custom CSS color gradients.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="gradient-generator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-adjust text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Contrast Checker</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Check color contrast for accessibility.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="contrast-checker.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-swatchbook text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Palette Generator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Generate harmonious color palettes.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="palette-generator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-eye-slash text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Color Blindness Simulator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">See how designs appear to color-blind users.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="color-blindness-simulator.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -399,19 +416,19 @@
                         <i class="fas fa-keyboard text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Keyword Density Checker</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Analyze keyword frequency in text.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="keyword-density-checker.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-tags text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Meta Tag Analyzer</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Examine meta tags of a web page.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="meta-tag-analyzer.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-text-width text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Word Counter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Count words in text for content creation.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="word-counter.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
@@ -424,31 +441,31 @@
                         <i class="fas fa-qrcode text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">QR & Barcode Generator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Create QR codes and barcodes.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="qr-barcode-generator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-fingerprint text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">UUID Generator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Generate universally unique identifiers.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="uuid-generator.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-balance-scale text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Unit Converter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert between different units of measurement.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="unit-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-clock text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Time Zone Converter</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Convert times between different time zones.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="time-zone-converter.html" class="tool-button-link">Use Tool</a>
                     </div>
                      <div class="tool-card bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center border border-gray-200">
                         <i class="fas fa-random text-4xl text-blue-500 mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2 tool-name">Random Number/Password Generator</h3>
                         <p class="text-gray-600 text-sm mb-4 tool-description">Generate random numbers or secure passwords.</p>
-                        <button class="bg-blue-500 text-white py-2 px-4 rounded-full text-sm hover:bg-blue-600 transition duration-300">Use Tool</button>
+                        <a href="random-generator.html" class="tool-button-link">Use Tool</a>
                     </div>
                 </div>
             </div>
