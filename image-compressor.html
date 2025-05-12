@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor - Tools Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f7f6; /* Light background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Custom styling for file input button */
+        .custom-file-upload {
+            border: 2px dashed #60a5fa; /* Blue dashed border */
+            display: inline-block;
+            padding: 12px 24px;
+            cursor: pointer;
+            background-color: #e0f2f7; /* Light blue background */
+            color: #0284c7; /* Darker blue text */
+            border-radius: 0.5rem; /* Rounded corners */
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #bae6fd; /* Lighter blue on hover */
+            border-color: #3b82f6; /* Brighter blue border on hover */
+        }
+
+        /* Hide the actual file input */
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Image preview styling */
+        #image-preview {
+            max-width: 100%;
+            max-height: 400px; /* Limit preview height */
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+        }
+
+        /* Download link styling */
+        #download-link {
+            display: none; /* Hidden by default */
+        }
+         /* Slider styling */
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+            border-radius: 4px;
+        }
+
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 2px rgba(0,0,0,0.3);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #3b82f6;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 0 2px rgba(0,0,0,0.3);
+        }
+
+    </style>
+</head>
+<body class="p-6">
+
+    <div class="container mx-auto max-w-3xl bg-white rounded-lg shadow-xl p-8">
+
+        <h1 class="text-3xl font-bold text-center text-blue-700 mb-8">Image Compressor</h1>
+
+        <div class="mb-8 text-center">
+            <label for="image-upload" class="custom-file-upload">
+                <i class="fas fa-cloud-upload-alt mr-2"></i> Choose an Image
+            </label>
+            <input type="file" id="image-upload" accept="image/*">
+            <p id="file-name" class="mt-2 text-gray-600 text-sm"></p>
+        </div>
+
+        <div class="mb-8 text-center">
+            <img id="image-preview" src="#" alt="Image Preview">
+        </div>
+
+        <div class="mb-8">
+            <label for="compression-quality" class="block text-lg font-semibold text-gray-800 mb-2">Compression Quality:</label>
+            <input type="range" id="compression-quality" min="1" max="100" value="80" class="w-full">
+            <p class="text-center text-gray-600 mt-2"><span id="quality-value">80</span>%</p>
+        </div>
+
+
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
+            <button id="compress-btn" class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-md shadow-md hover:bg-blue-700 transition duration-300 cursor-not-allowed opacity-50" disabled>
+                Compress Image
+            </button>
+            <a id="download-link" href="image-compressor.html" download="compressed_image.jpg" class="bg-green-600 text-white font-semibold py-3 px-8 rounded-md shadow-md hover:bg-green-700 transition duration-300 text-center">
+                <i class="fas fa-download mr-2"></i> Download Image
+            </a>
+        </div>
+
+        <div id="status-message" class="text-center text-sm text-gray-700 mt-4"></div>
+
+        <div class="text-center text-sm text-gray-700 mt-4">
+            <p id="original-size"></p>
+            <p id="compressed-size"></p>
+         </div>
+
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('image-upload');
+        const fileNameDisplay = document.getElementById('file-name');
+        const imagePreview = document.getElementById('image-preview');
+        const compressionQualityInput = document.getElementById('compression-quality');
+        const qualityValueDisplay = document.getElementById('quality-value');
+        const compressBtn = document.getElementById('compress-btn');
+        const downloadLink = document.getElementById('download-link');
+        const statusMessage = document.getElementById('status-message');
+        const originalSizeDisplay = document.getElementById('original-size');
+        const compressedSizeDisplay = document.getElementById('compressed-size');
+
+        let uploadedImageBlob = null; // To store the uploaded image data
+
+        // Update quality value display
+        compressionQualityInput.addEventListener('input', function() {
+            qualityValueDisplay.textContent = this.value;
+        });
+
+        // Enable compress button when a file is selected
+        fileInput.addEventListener('change', function() {
+            const file = this.files[0];
+
+            if (file) {
+                fileNameDisplay.textContent = `Selected: ${file.name}`;
+                originalSizeDisplay.textContent = `Original size: ${formatBytes(file.size)}`; // Display original size
+                compressedSizeDisplay.textContent = ''; // Clear compressed size
+
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block'; // Show the preview
+                    uploadedImageBlob = file; // Store the file data
+                    compressBtn.disabled = false; // Enable compress button
+                    compressBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    downloadLink.style.display = 'none'; // Hide download link until compression
+                    statusMessage.textContent = ''; // Clear status message
+                }
+
+                reader.onerror = function() {
+                    statusMessage.textContent = 'Error reading file.';
+                    imagePreview.style.display = 'none';
+                    uploadedImageBlob = null;
+                    compressBtn.disabled = true;
+                    compressBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                    downloadLink.style.display = 'none';
+                    originalSizeDisplay.textContent = '';
+                    compressedSizeDisplay.textContent = '';
+                }
+
+                reader.readAsDataURL(file); // Read file as Data URL for preview
+            } else {
+                fileNameDisplay.textContent = '';
+                imagePreview.style.display = 'none';
+                uploadedImageBlob = null;
+                compressBtn.disabled = true;
+                compressBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                downloadLink.style.display = 'none';
+                statusMessage.textContent = '';
+                originalSizeDisplay.textContent = '';
+                compressedSizeDisplay.textContent = '';
+            }
+        });
+
+        // Handle Compress Button Click
+        compressBtn.addEventListener('click', function() {
+            if (!uploadedImageBlob) {
+                statusMessage.textContent = 'Please upload an image first.';
+                return;
+            }
+
+            statusMessage.textContent = 'Compressing...';
+            downloadLink.style.display = 'none'; // Hide previous download link
+            compressedSizeDisplay.textContent = ''; // Clear previous compressed size
+
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Set canvas dimensions to match the image
+                canvas.width = img.width;
+                canvas.height = img.height;
+
+                // Draw the image onto the canvas
+                ctx.drawImage(img, 0, 0);
+
+                // Get the selected compression quality (0 to 1)
+                const quality = parseInt(compressionQualityInput.value) / 100;
+
+                // Convert canvas content to a Blob with specified quality (defaults to JPEG)
+                canvas.toBlob(function(blob) {
+                    if (blob) {
+                        const url = URL.createObjectURL(blob);
+                        downloadLink.href = url;
+                        downloadLink.download = `compressed_image.${blob.type.split('/')[1] || 'jpg'}`; // Set download filename
+                        downloadLink.style.display = 'inline-block'; // Show download link
+                        statusMessage.textContent = 'Compression complete!';
+                        compressedSizeDisplay.textContent = `Compressed size: ${formatBytes(blob.size)}`; // Display compressed size
+                    } else {
+                        statusMessage.textContent = 'Error during compression.';
+                    }
+                }, 'image/jpeg', quality); // Specify output format (can be dynamic if needed) and quality
+
+            }
+
+            img.onerror = function() {
+                statusMessage.textContent = 'Error loading image for compression.';
+                downloadLink.style.display = 'none';
+                compressedSizeDisplay.textContent = '';
+            }
+
+            // Use FileReader to get Data URL for drawing on canvas
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                img.src = e.target.result;
+            }
+            reader.onerror = function() {
+                statusMessage.textContent = 'Error reading image data.';
+                downloadLink.style.display = 'none';
+                compressedSizeDisplay.textContent = '';
+            }
+            reader.readAsDataURL(uploadedImageBlob); // Read file as Data URL for Image object
+        });
+
+        // Helper function to format file size
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+
+        // Revoke object URL when download link is clicked or page is closed (optional cleanup)
+        downloadLink.addEventListener('click', function() {
+            // setTimeout(() => URL.revokeObjectURL(this.href), 1000); // Revoke after a short delay
+        });
+
+        window.addEventListener('beforeunload', function() {
+            if (downloadLink.href && downloadLink.href.startsWith('blob:')) {
+                URL.revokeObjectURL(downloadLink.href);
+            }
+        });
+
+    </script>
+
+</body>
+</html>
